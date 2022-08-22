@@ -15,7 +15,7 @@ class CreateCondominios extends Migration
     {
         Schema::create('condominios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('sindico_id');
+            $table->integer('sindico_id')->default(1);
             $table->string('name');
             $table->text('endereco');
             $table->timestamps();

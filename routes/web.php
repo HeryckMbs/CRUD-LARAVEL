@@ -15,7 +15,6 @@ use App\Http\Controllers\usuarioController;
 */
 
 Route::get('/',[Controller::class,'index'])->name('index');
-Route::get('/alunos',[Controller::class,'alunos'])->name('alunos');
 
 Route::prefix('index')->group(function () {
     Route::post('/salvauser',[usuarioController::class, 'salvar'])->name('condominos.salvar');
