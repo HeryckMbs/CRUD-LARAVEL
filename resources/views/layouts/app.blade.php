@@ -21,7 +21,7 @@ body{
 }
 a{
     text-decoration: none;
-
+    width: auto;
 }
 ul{
     list-style: none;
@@ -32,36 +32,60 @@ ul{
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-success">
-            <div class="container-fluid" style="text-align: center">
-                <a class="navbar-brand" >Gestão Condominial</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav class="navbar navbar-dark lighten-4 mb-4">
+
+            <!-- Navbar brand -->
+            <a class="navbar-brand" style="color: white" href="#">Gestão Condominial</a>
+
+            <!-- Collapse button -->
+            <button id="btn-menu" class="navbar-toggler first-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+                    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="animated-icon1"><span></span><span></span><span></span></div>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active bg-dark">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li  class=" bg-dark nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item bg-dark">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                </ul>
+                <!-- Links -->
+
             </div>
-            <button id="menuBtn">Menu</button>
-            <div id="nav">
-                    <ul id="menu">
-                        <li><a href="#">Condomínios</a></li>
-                        <li><a href="#">Usuários</a></li>
-                        <li><a href="#">Reserva de espaços</a></li>
-                        <li><a href="#">Sobre</a></li>
-                    </ul>
-            </div>
+            <!-- Collapsible content -->
+
         </nav>
+        <!--/.Navbar-->
         <main>
             @yield('content')
         </main>
 
     </div>
     <script>
-        const btn = document.querySelector('#menuBtn');
-        function menu()
-        {
-            let menu = document.querySelector('#nav');
-            menu.classList.toggle('active')
+        $(document).ready(function () {
 
-        }
+            $('.first-button').on('click', function () {
+
+                $('.animated-icon1').toggleClass('open');
+            });
+            $('.second-button').on('click', function () {
+
+                $('.animated-icon2').toggleClass('open');
+            });
+            $('.third-button').on('click', function () {
+
+                $('.animated-icon3').toggleClass('open');
+            });
+        });
     </script>
     <script src="https://kit.fontawesome.com/01659e7f91.js" crossorigin="anonymous"></script>
 </body>

@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\DB;
 class Controller extends BaseController
 {
     public function index(){
-        $sindicos = DB::table('usuarios')->select('id','name','numero')->get()->toArray();
-
-        return view('index',compact('sindicos'));
+        $pessoas = DB::table('usuarios')->select('id','name','numero')->get()->toArray();
+        $condominios = DB::table('condominios')->select('id','name')->get()->toArray();
+        return view('index',compact('pessoas','condominios'));
     }
 
 

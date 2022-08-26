@@ -14,7 +14,9 @@
                        class="btn btn-success">Cadastrar Condomínio</a>
                     <a data-toggle="modal" data-target="#condominoModal" class="btn btn-warning">Cadastrar
                         Usuário</a>
-                    <a class="btn btn-danger">Cadastrar Apartamento</a>
+                    <a data-toggle="modal" data-target="#apartamentoModal" class="btn btn-danger">Cadastrar
+                        Apartamento</a>
+
                     <a class="btn btn-primary">Listar Espaços de reserva</a>
                 </div>
             </div>
@@ -92,8 +94,8 @@
                                 <label class="text-semibold">Síndico Responsável</label>
                                 <select class="form-control" name="sindico">
                                     <option value=" ">Selecione uma opção</option>
-                                    @foreach($sindicos as $sindico)
-                                        <option value="{{$sindico->id}}">{{$sindico->name}}</option>
+                                    @foreach($pessoas as $pessoa)
+                                        <option value="{{$pessoa->id}}">{{$pessoa->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -165,18 +167,30 @@
     </form>
 
     <form method="POST" enctype="multipart/form-data">
-        <div id="condoinioModal" class="modal fade">
+        <div id="apartamentoModal" class="modal fade">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5>Cadastro de Condomínio</h5>
+                        <h5>Cadastro de Apartamento/Unidade</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="text-semibold">Condomínio</label>
+                                <select name="condominio" class="form-control">
+                                    @foreach($condominios as $condominio)
+                                        <option value="{{$condominio->id}}">{{$condominio->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
 
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -192,14 +206,21 @@
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5>Cadastro de Condomínio</h5>
+                        <h5>Selecionar Síndico</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
                         <div class="row">
-
+                            <div class="col-md-12">
+                                <label class="text-semibold">Condomínio</label>
+                                <select name="pessoa" class="form-control">
+                                    @foreach($pessoas as $pessoa)
+                                        <option value="{{$pessoa->id}}">{{$pessoa->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
