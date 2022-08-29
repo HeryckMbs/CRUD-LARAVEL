@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\condominioController;
 use App\Http\Controllers\usuarioController;
+use App\Http\Controllers\apartamentoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +20,6 @@ Route::get('/',[Controller::class,'index'])->name('index');
 Route::prefix('index')->group(function () {
     Route::post('/salvauser',[usuarioController::class, 'salvar'])->name('condominos.salvar');
     Route::post('/salvaCondo',[condominioController::class, 'salvar'])->name('condominios.salvar');
+    Route::post('/salvaSindico',[usuarioController::class,'sindico'])->name('sindico.salvar');
+    Route::post('/salvaApt',[apartamentoController::class,'salvar'])->name('apartamento.salvar');
 });

@@ -4,17 +4,16 @@ namespace App\Http\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Apartamento extends Model
+class Sindico extends Model
 {
     protected $fillable = [
-        'num_andar',
+        'usuario_id',
         'condominio_id',
-        'usuario_id'
+        'name'
     ];
 
     protected $dates = [
         'created_at',
         'updated_at'
-    ];
-
+        ];
 }

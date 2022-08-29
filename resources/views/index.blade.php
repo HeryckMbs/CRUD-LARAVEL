@@ -16,6 +16,7 @@
                         Usuário</a>
                     <a data-toggle="modal" data-target="#apartamentoModal" class="btn btn-danger">Cadastrar
                         Apartamento</a>
+                    <a data-toggle="modal" data-target="#sindicoModal" class="btn btn-secondary">Cadastrar Síndico</a>
 
                     <a class="btn btn-primary">Listar Espaços de reserva</a>
                 </div>
@@ -94,7 +95,7 @@
                                 <label class="text-semibold">Síndico Responsável</label>
                                 <select class="form-control" name="sindico">
                                     <option value=" ">Selecione uma opção</option>
-                                    @foreach($pessoas as $pessoa)
+                                    @foreach($sindicos as $pessoa)
                                         <option value="{{$pessoa->id}}">{{$pessoa->name}}</option>
                                     @endforeach
                                 </select>
@@ -166,7 +167,8 @@
 
     </form>
 
-    <form method="POST" enctype="multipart/form-data">
+    <form action="{{route('apartamento.salvar')}}" method="POST" enctype="multipart/form-data" >
+        @csrf
         <div id="apartamentoModal" class="modal fade">
             <div class="modal-dialog ">
                 <div class="modal-content">
@@ -180,7 +182,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label class="text-semibold">Condomínio</label>
-                                <select name="condominio" class="form-control">
+                                <select name="condominio_id" class="form-control">
                                     @foreach($condominios as $condominio)
                                         <option value="{{$condominio->id}}">{{$condominio->name}}</option>
                                     @endforeach
@@ -189,20 +191,33 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
-
+                                <label class="text-semibold">Número do andar </label>
+                                <input type="number" name="andar" class="form-control">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="text-semibold">Responsável pela unidade</label>
+                                <select name="usuario_id" class="form-control" >
+                                @foreach($pessoas as $pessoa)
+                                    <option value="{{$pessoa->id}}">{{$pessoa->name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
-
+                        <button type="submit" class="btn btn-success">Salvar</button>
                     </div>
                 </div>
             </div>
         </div>
     </form>
 
-    <form>
-        <div id="condoinioModal" class="modal fade">
+    <form action="{{route('sindico.salvar')}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <div id="sindicoModal" class="modal fade">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -213,8 +228,8 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <div class="col-md-12">
-                                <label class="text-semibold">Condomínio</label>
+                            <div class="col-md-12 form-group">
+                                <label class="text-semibold">Síndico</label>
                                 <select name="pessoa" class="form-control">
                                     @foreach($pessoas as $pessoa)
                                         <option value="{{$pessoa->id}}">{{$pessoa->name}}</option>
@@ -222,9 +237,19 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label class="text-semibold">Condomínio</label>
+                                <select class="form-control" name="condominio">
+                                    @foreach($condominios as $condominio)
+                                        <option value="{{$condominio->id}}">{{$condominio->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
-
+                        <button type="submit" class="btn btn-success">Salvar</button>
                     </div>
                 </div>
             </div>

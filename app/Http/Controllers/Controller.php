@@ -14,7 +14,8 @@ class Controller extends BaseController
     public function index(){
         $pessoas = DB::table('usuarios')->select('id','name','numero')->get()->toArray();
         $condominios = DB::table('condominios')->select('id','name')->get()->toArray();
-        return view('index',compact('pessoas','condominios'));
+        $sindicos = DB::table('sindicos')->select('id','name')->get()->toArray();
+        return view('index',compact('pessoas','condominios','sindicos'));
     }
 
 

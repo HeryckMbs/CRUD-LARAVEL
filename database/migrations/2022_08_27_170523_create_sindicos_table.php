@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSindicoCondominioTable extends Migration
+class CreateSindicosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateSindicoCondominioTable extends Migration
      */
     public function up()
     {
-        Schema::create('sindico_condominio', function (Blueprint $table) {
+        Schema::create('sindicos', function (Blueprint $table) {
             $table->Increments('id');
             $table->integer('usuario_id');
+            $table->text('name');
+            $table->integer('condominio_id');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateSindicoCondominioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sindico_condominio');
+        Schema::dropIfExists('sindicos');
     }
 }
